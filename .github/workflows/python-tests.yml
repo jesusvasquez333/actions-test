@@ -1,9 +1,9 @@
-name: ci
+name: python tests
 on: push
 
 jobs:
-  ci:
-    name: CI tests
+  python-tests:
+    name: python tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -19,7 +19,3 @@ jobs:
 
       - name: Flake8 Checks
         run: flake8 --count python/
-
-      - name: Compile
-        run: g++ -o test test.cpp
-        shell: bash
