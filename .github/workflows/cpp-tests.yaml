@@ -28,5 +28,5 @@ jobs:
           name: binary
 
       - name: Run
-        run: ./test
+        run: chmod +x test && ./test
         shell: bash
