@@ -30,3 +30,20 @@ jobs:
       - name: Run
         run: chmod +x test && ./test
         shell: bash
+  cpp-publish:
+    name: C++ publish binary
+    needs: cpp-tests-2
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Push to docker hub
+        run: echo "Docker push here"
+        shell: bash
+        #uses docker/build-push-action@v1
+        #with:
+        #  username: ${{ secrets.DOCKER_USERNAME }}
+        #  password: ${{ secrets.DOCKER_PASSWORD }}
+        #  repository: jesusvasquez333/test-push
+        #  tag_with_ref: true
