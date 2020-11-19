@@ -12,3 +12,7 @@ jobs:
       - name: Compile
         run: g++ -o test test.cpp
         shell: bash
+
+      - name: Run
+        run: ./test
+        shell: bash
