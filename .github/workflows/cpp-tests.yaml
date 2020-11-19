@@ -12,7 +12,9 @@ jobs:
       - name: Compile
         run: g++ -o test test.cpp
         shell: bash
-
+  cpp-tests-2:
+    name: C++ test second
+    steps:
       - name: Run
         run: ./test
         shell: bash
