@@ -14,6 +14,7 @@ jobs:
         shell: bash
   cpp-tests-2:
     name: C++ test second
+    runs-on: ubuntu-latest
     steps:
       - name: Run
         run: ./test
