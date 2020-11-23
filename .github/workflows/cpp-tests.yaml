@@ -19,9 +19,9 @@ jobs:
           echo VAR1 = $VAR1
           echo BRANCH_NAME = $BRANCH_NAME
           echo GITHUB_REF = $GITHUB_REF
-          TRAVIS_BRANCH=${BRANCH_NAME:-$(echo $GITHUB_REF#refs/heads/)}
+          TRAVIS_BRANCH=${BRANCH_NAME:-$(echo ${GITHUB_REF#refs/heads/})}
           echo TRAVIS_BRANCH = $TRAVIS_BRANCH
-          echo ::set-output name=branch::"${BRANCH_NAME:-$(echo $GITHUB_REF#refs/heads/)}"
+          echo ::set-output name=branch::"${BRANCH_NAME:-$(echo ${GITHUB_REF#refs/heads/})}"
           
       - name: Read branch name
         run: echo Branch name = ${{ steps.branch_name.outputs.branch }}
