@@ -19,9 +19,9 @@ jobs:
           echo VAR1 = $VAR1
           echo BRANCH_NAME = $BRANCH_NAME
           echo GITHUB_REF = $GITHUB_REF
-          TRAVIS_BRANCH=${BRANCH_NAME:-$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}
+          TRAVIS_BRANCH=${BRANCH_NAME:-$(echo $GITHUB_REF#refs/heads/)}
           echo TRAVIS_BRANCH = $TRAVIS_BRANCH
-          echo ::set-output name=branch::"${BRANCH_NAME:-$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}"
+          echo ::set-output name=branch::"${BRANCH_NAME:-$(echo $GITHUB_REF#refs/heads/)}"
           
       - name: Read branch name
         run: echo Branch name = ${{ steps.branch_name.outputs.branch }}
@@ -91,4 +91,4 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.prep.outputs.tags }}
+          tags: "jesusvasquez333/test-push:${GITHUB_REF#refs/tags/}"
