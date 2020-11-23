@@ -10,9 +10,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get branch name
+        env:
+          VAR1: TEST
+          BRANCH_NAME: ${{ github.head_ref }}
         run: |
-          echo ${{ github.head_ref }}
+          echo $VAR1
+          echo $BRANCH_NAME
           echo $GITHUB_REF
+          echo "::set-env name=TRAVIS_BRANCH::${BRANCH_NAME:-$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}"
+          echo $TRAVIS_BRANCH
           
       - name: Compile
         run: g++ -o test test.cpp
