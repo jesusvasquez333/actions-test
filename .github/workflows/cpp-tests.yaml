@@ -25,7 +25,7 @@ jobs:
           
           
       - name: Read branch name
-        run: echo Branch name = ${{ steps.branch_name.branch }}
+        run: echo Branch name = ${{ steps.branch_name.outputs.branch }}
         
       - name: Compile
         run: g++ -o test test.cpp
