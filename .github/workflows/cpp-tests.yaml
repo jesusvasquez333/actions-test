@@ -9,6 +9,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get branch name
+        run: |
+          echo ${{ github.head_ref }}
+          echo $GITHUB_REF
+          
       - name: Compile
         run: g++ -o test test.cpp
         shell: bash
