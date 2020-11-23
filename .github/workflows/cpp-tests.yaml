@@ -1,5 +1,5 @@
 name: C++ tests
-on: push
+on: [push, pull_request]
 
 jobs:
   cpp-tests:
