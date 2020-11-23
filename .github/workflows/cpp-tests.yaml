@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get branch name
+        id: branch_name
         env:
           VAR1: TEST
           BRANCH_NAME: ${{ github.head_ref }}
@@ -20,7 +21,12 @@ jobs:
           echo GITHUB_REF = $GITHUB_REF
           TRAVIS_BRANCH=${BRANCH_NAME:-$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}
           echo TRAVIS_BRANCH = $TRAVIS_BRANCH
+          echo ::set-output name=branch::"$TRAVIS_BRANCH"
           
+          
+      - name: Read branch name
+        run: echo Branch name = ${{ steps.branch_name.branch }}
+        
       - name: Compile
         run: g++ -o test test.cpp
         shell: bash
