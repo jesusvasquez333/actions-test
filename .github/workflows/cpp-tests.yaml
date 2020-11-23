@@ -41,7 +41,7 @@ jobs:
             
       - name: test docker
         run: |
-          docker exec test /bin/bash uname -a
+          docker exec test /bin/bash pwd
           
       - name: Compile
         run: g++ -o test test.cpp
