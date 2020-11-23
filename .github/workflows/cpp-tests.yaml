@@ -33,7 +33,15 @@ jobs:
         run: docker build -t test_docker .
           
       - name: start docker
-        run: docker image ls
+        run: |
+          docker container run -dti --rm \
+            --name test \
+            --entrypoint bash \
+            test_docker
+            
+      - name: test docker
+        run: |
+          docker exec test /bin/bash uname -a
           
       - name: Compile
         run: g++ -o test test.cpp
