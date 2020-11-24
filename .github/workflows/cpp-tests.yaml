@@ -94,5 +94,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.prep.outputs.tags }}
-          build-args: branch=${{ steps.prep.outputs.branch }}
+          tags: jesusvasquez333/test-push:${GITHUB_REF#refs/tags/}
+          build-args: branch=${GITHUB_REF#refs/tags/}
