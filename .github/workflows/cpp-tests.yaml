@@ -11,12 +11,10 @@ jobs:
 
       - name: Set enviroment
         run: |
-          echo "-----"
-          echo $(env)
-          echo "-----"
           export PACKAGE_DIR=$GITHUB_WORKSPACE/packages
           export EPICS_DIR=$PACKAGE_DIR/epics/base-7.0.3
           export OTHER_DIR=$PACKAGE_DIR/other/v1
+          env >> $GITHUB_ENV
           
       - name: Create EPICS dir
         run: |
