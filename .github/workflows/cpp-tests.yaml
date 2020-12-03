@@ -2,7 +2,8 @@ name: C++ tests
 on: [push, pull_request]
 
 env:
-  GLOBAL_VAR_1: test var 1
+  PACKAGE_DIR: ${GITHUB_WORKSPACE}/packages
+  EPICS_DIR: ${PACKAGE_DIR}/epics/base-7.0.3
   
 jobs:
   cpp-tests:
@@ -12,8 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Test global var
-        run: echo "GLOBAL_VAR_1 = ${GLOBAL_VAR_1}"
+      - name: Create EPICS dir
+        run: |
+          mkdir -p ${EPICS_DIR}
+          cd ${EPICS_DIR}
+          echo $(pwd)
         
       - name: Get branch name
         id: branch_name
