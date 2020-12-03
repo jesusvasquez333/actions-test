@@ -2,8 +2,8 @@ name: C++ tests
 on: [push, pull_request]
 
 env:
-  PACKAGE_DIR: "${GITHUB_WORKSPACE}/packages"
-  EPICS_DIR: "${PACKAGE_DIR}/epics/base-7.0.3"
+  PACKAGE_DIR: "${{ github.GITHUB_WORKSPACE }}/packages"
+  EPICS_DIR: "${{ env.PACKAGE_DIR }}/epics/base-7.0.3"
   
 jobs:
   cpp-tests:
