@@ -2,7 +2,7 @@ name: C++ tests
 on: [push, pull_request]
 
 env:
-  PACKAGE_DIR: ${{ format('{0}/packages', github.GITHUB_WORKSPACE) }}
+  PACKAGE_DIR: ${{ format('{0}/packages', $GITHUB_WORKSPACE) }}
   EPICS_DIR: 
   
 jobs:
