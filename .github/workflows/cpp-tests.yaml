@@ -14,7 +14,7 @@ jobs:
 
       - name: Create EPICS dir
         env:
-          EPICS_DIR: ${{ GITHUB_WORKSPACE }}/${{ env.PACKAGE_DIR }}/epics/base-7.0.3
+          EPICS_DIR: ${GITHUB_WORKSPACE}/${{ env.PACKAGE_DIR }}/epics/base-7.0.3
         run: |
           echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
           echo "PACKAGE_DIR = ${PACKAGE_DIR}"
