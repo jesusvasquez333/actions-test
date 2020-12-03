@@ -1,8 +1,5 @@
 name: C++ tests
 on: [push, pull_request]
-
-env:
-  PACKAGE_DIR: packages
   
 jobs:
   cpp-tests:
@@ -12,9 +9,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set enviroment
+        run: |
+          echo "::set-env name=PACKAGE_DIR::$GITHUB_WORKSPACE/packages"
+          echo "::set-env name=EPICS_DIR::$PACKAGE_DIR/epics/base-7.0.3"
+          
       - name: Create EPICS dir
-        env:
-          EPICS_DIR: ${GITHUB_WORKSPACE}/${{ env.PACKAGE_DIR }}/epics/base-7.0.3
         run: |
           echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
           echo "PACKAGE_DIR = ${PACKAGE_DIR}"
