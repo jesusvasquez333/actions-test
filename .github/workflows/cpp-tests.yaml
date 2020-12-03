@@ -15,8 +15,9 @@ jobs:
 
       - name: Create EPICS dir
         run: |
-          mkdir -p ${EPICS_DIR}
-          cd ${EPICS_DIR}
+          echo "EPICS_DIR = ${EPICS_DIR}"
+          mkdir -p "${EPICS_DIR}"
+          cd "${EPICS_DIR}"
           echo $(pwd -P)
         
       - name: Get branch name
