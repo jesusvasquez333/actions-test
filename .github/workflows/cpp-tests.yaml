@@ -11,8 +11,8 @@ jobs:
 
       - name: Set enviroment
         run: |
-          echo "::set-env name=PACKAGE_DIR::$GITHUB_WORKSPACE/packages"
-          echo "::set-env name=EPICS_DIR::$PACKAGE_DIR/epics/base-7.0.3"
+          echo "PACKAGE_DIR=$GITHUB_WORKSPACE/packages" >> $GITHUB_ENV
+          echo "EPICS_DIR=$PACKAGE_DIR/epics/base-7.0.3" >> $GITHUB_ENV
           
       - name: Create EPICS dir
         run: |
