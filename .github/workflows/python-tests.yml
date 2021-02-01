@@ -28,5 +28,7 @@ jobs:
         run: flake8 --count python/
       
       - name: Run gren
+        env:
+          GREN_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gren release
         
