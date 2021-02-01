@@ -27,6 +27,6 @@ jobs:
       - name: Flake8 Checks
         run: flake8 --count python/
       
-      - name: Run green
-        run: green release
+      - name: Run gren
+        run: gren release
         
